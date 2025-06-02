@@ -166,59 +166,6 @@ app.get('/mahasiswa/dashboard', isAuthenticated, async (req, res) => {
 	});
 });
 
-app.get('/mahasiswa/jadwal', isAuthenticated, async (req, res) => {
-    try {
-        const userId = req.session.user.id;
-        
-        if (!userId) {
-            return res.status(400).send('User ID required');
-        }
-
-        const [jadwals] = await pool.query(
-            `SELECT j.*, 
-            u.username AS mahasiswa,
-            d.username AS dosen_nama 
-            FROM jadwal j
-            JOIN users u ON j.user_id = u.id
-            JOIN users d ON j.supervisor_id = d.id
-            WHERE j.user_id = ?
-            ORDER BY tanggal ASC, waktu_mulai ASC`,
-            [userId]
-        );
-
-		const [dosens] = await pool.query(
-		"SELECT id, username FROM users WHERE role = 'dosen'");
-
-		res.render('mahasiswa/jadwal', {
-			initialData: JSON.stringify({
-				jadwalList: jadwals || [],
-				listDosen: dosens || [],
-				currentUser: req.session.user,
-            })
-        });
-
-    } catch (error) {
-        console.error('Error fetching jadwal:', error);
-        res.status(500).render('error', { 
-            message: 'Gagal memuat jadwal',
-            error
-        });
-    }
-});
-
-
-app.get('/mahasiswa/buat', isAuthenticated, async (req, res) => {
-	const [dosens] = await pool.query(
-	"SELECT id, username FROM users WHERE role = 'dosen'");
-	
-	res.render('mahasiswa/buat', {
-		initialData: JSON.stringify({
-			listDosen: dosens || [],
-			currentUser: req.session.user,
-		})
-	});
-});
-
 app.get('/mahasiswa/bimbingan', isAuthenticated, async (req, res) => {
     try {
         const userId = req.session.user.id;
@@ -292,7 +239,7 @@ app.get('/dosen/bimbingan', isAuthenticated, async (req, res) => {
 			[userId],
 		);
 		
-		res.render('dosen/verifikasi', {
+		res.render('dosen/bimbingan', {
 			initialData: JSON.stringify({
 				verifList: sedangVerifikasis || [],
 				bimbinganList: bimbingans || [],
