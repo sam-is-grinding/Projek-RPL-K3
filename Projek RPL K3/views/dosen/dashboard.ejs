@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="/sidebar.css">
+    <title>Halaman Dosen</title>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+
+<body>
+    <div x-data="app()" x-cloak class="dashboard-layout">
+        <%- include('../partials/sidebar-dosen') %>
+        <!-- Header Navigasi -->
+        <div class="main-content-wrapper">
+            <div class="header">
+                <div class="nav-container">
+                    <div class="nav-icons">
+                        <img src="../pic/kompas.png" class="nav-icon" alt="Pen" />
+                        <img src="../pic/chat.png" class="nav-icon" alt="Chat" />
+                        <img src="../pic/notif.png" class="nav-icon" alt="Notifications" />
+                        <span class="logout"><img src="../pic/logout.png" class="nav-icon" alt="Logout" /> <a href="/logout">Keluar</a></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Konten Utama -->
+            <div class="container">
+                <div class="main-container">
+                    <h3 class="section-title">Halo om~</h3>
+                </div>
+            </div>
+    </div>
+
+       <script>
+        function app() {
+            return {
+                currentUser: JSON.parse('<%- initialData %>').currentUser,
+            }
+        }
+    </script>
+</body>
+</html>
