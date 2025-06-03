@@ -73,13 +73,18 @@ app.get('/register', (req, res) => {
 
 // REGISTER
 app.post('/register', async (req, res) => {
-	const { username, password, role } = req.body;
+	const { username, password, confirmPassword } = req.body;
+
+    // Validasi confirm password
+    if (password !== confirmPassword) {
+        return res.redirect('/auth?error=Password dan konfirmasi password tidak sama&activeTab=register');
+    }
 
 	try {
 		const hashedPassword = await bcrypt.hash(password, 8);
 		await pool.query(
 			'INSERT INTO users (username, password, role) VALUES (?, ?, ?)',
-			[username, hashedPassword, role || 'mahasiswa']
+			[username, hashedPassword, 'mahasiswa']
 		);
 
 		res.render('auth', {
