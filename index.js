@@ -77,7 +77,7 @@ app.post('/register', async (req, res) => {
 
     // Validasi confirm password
     if (password !== confirmPassword) {
-        return res.redirect('/auth?error=Password dan konfirmasi password tidak sama&activeTab=register');
+        return res.redirect(`/auth?error=Password dan konfirmasi password tidak sama&activeTab=register&uname=${encodeURIComponent(username)}`);
     }
 
 	try {
