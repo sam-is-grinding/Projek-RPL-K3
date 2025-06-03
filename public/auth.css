@@ -37,6 +37,30 @@ body {
     background-color: #F3F4FF;
 }
 
+.success-box {
+    padding: 10px 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 100%;
+    width: 500px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+}
+
+.error-box {
+    padding: 10px 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 100%;
+    width: 500px;
+    background-color: #f5365c;
+    color: white;
+    font-weight: bold;
+}
+
 .logo img{
   height: 60px;
 }
@@ -71,6 +95,7 @@ input[type="password"] {
   background-color: #ffffff;
   margin-bottom: 15px;
   font-size: 14px;
+  
 }
 
 .form-options {

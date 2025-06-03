@@ -4,6 +4,7 @@
 <head>
     <script src="https://unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
     <title>Halaman Dosen</title>
     <style>
@@ -30,8 +31,9 @@
                     </div>
                 </div>
 
-
                 <!-- Konten Utama -->
+                <h1 class="section-title">Mahasiswa Bimbingan</h1>
+                <div class="white-box">
                 <div class="list-container">
                     <div class="tab-container">
                         <button @click="currentTab = 'bimbingan'" :class="{'active': currentTab === 'bimbingan'}"
@@ -49,7 +51,7 @@
                     <div class="main-container">
                         <!-- Konten Bimbingan -->
                         <template x-if="currentTab === 'bimbingan'">
-                            <div class="content-box">
+                            <!-- <div class="content-box"> -->
                                 <div class="jadwal-container">
                                     <template x-if="bimbinganList.length === 0">
                                         <div class="empty-state">

@@ -17,14 +17,14 @@
             <!-- Halaman Auth -->
             <div>
             <% if (typeof success !=='undefined' && success) { %>
-                <div>
+                <div class="success-box">
                     <p>
                         <%= success %>
                     </p>
                 </div>
             <% } %>
             <% if (typeof error !=='undefined' && error) { %>
-                <div>
+                <div class="error-box">
                     <p>
                         <%= error %>
                     </p>
@@ -44,7 +44,7 @@
                         <label>ID Pengguna</label>
                         <input 
                             type="text"
-                            x-model="loginData.username" required
+                            x-model="username" required
                             id="username"
                             name="username"
                             placeholder="Username"
@@ -53,7 +53,7 @@
                         <label>Password</label>
                         <input 
                             type="password" 
-                            x-model="loginData.password" required
+                            x-model="password" required
                             id="password"
                             name="password"
                             placeholder="Password"
@@ -125,8 +125,7 @@
                 return {
                     activeTab: '<%= typeof activeTab !== "undefined" ? activeTab : "login" %>',
                     username: '<%= typeof username !== "undefined" ? username : "" %>',
-                    // username: 'joha',
-                    // password: '123456',
+                    password: '',
                 }
             }
         </script>

@@ -4,6 +4,7 @@
 <head>
     <script src="https://unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
     <title>Halaman Mahasiswa</title>
     <style>
@@ -32,6 +33,9 @@
 
 
                 <!-- Konten Utama -->
+                
+                <h1 class="section-title">Jadwal Bimbingan</h1>
+                <div class="white-box">
                 <div class="list-container">
                     <div class="tab-container">
                         <button @click="currentTab = 'jadwal'" :class="{'active': currentTab === 'jadwal'}"
@@ -49,12 +53,13 @@
                     <div class="main-container">
                         <!-- Konten Bimbingan -->
                         <template x-if="currentTab === 'jadwal'">
-                            <div class="content-box">
                                 <div class="jadwal-container">
                                     <template x-for="j in jadwalList" :key="j.id">
                                         <div class="jadwal-card">
                                             <div class="jadwal-header">
-                                                <h4>Jadwal Bimbingan</h4>
+                                                <!-- <h4>Jadwal Bimbingan</h4> -->
+                                                <span class="date"
+                                                        x-text="new Date(j.tanggal).toLocaleDateString('id-ID')"></span>
                                                 <span class="status-badge" :class="j.status.toLowerCase()"
                                                     x-text="j.status"></span>
                                             </div>
@@ -73,8 +78,6 @@
                                             </div>
                                             <div class="jadwal-content">
                                                 <div class="jadwal-time">
-                                                    <span class="date"
-                                                        x-text="new Date(j.tanggal).toLocaleDateString('id-ID')"></span>
                                                     <span class="time"
                                                         x-text="j.waktu_mulai + ' - ' + j.waktu_selesai"></span>
                                                 </div>
@@ -89,7 +92,6 @@
                                     </template>
                                 </div>
 
-                            </div>
                         </template>
 
                         <!-- Konten Verifikasi -->
@@ -208,6 +210,7 @@
                 </div>
                 </template>
             </div>
+    </div>
     </div>
     </div>
     </div>
