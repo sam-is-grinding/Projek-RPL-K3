@@ -45,7 +45,7 @@ body {
 
 
 .main-container {
-    width: 80%;
+    width: 100%;
     /* Keep existing styles */
     padding: 0rem; /* This provides padding within the main content area */
 }
@@ -429,7 +429,6 @@ a {
     margin-bottom: 2rem;
     width: 100%;
     box-sizing: border-box;
-    min-width: 800px; 
     min-height: 200px;
 }
 
@@ -439,7 +438,6 @@ a {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 2rem;
     margin-bottom: 2rem;
-    width: 60%;
     box-sizing: border-box;
     min-width: 800px; 
     min-height: 200px;
